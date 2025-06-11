@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <!-- <link rel="icon" type="image/svg+xml" href="/logo.svg" /> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Solar System</title>
+    <meta name="description" content="Solar system made using by Three.js" />
+    <style>
+      body {
+        margin: 0;
+      }
+
+      canvas {
+        position: fixed;
+        z-index: 5;
+        inset: 0;
+      }
+
+      #speed-control {
+        position: fixed;
+        top: 16px;
+        left: 16px;
+        z-index: 1000;
+        background: rgba(0, 0, 0, 0.8);
+        /* Slightly darker background for better contrast */
+        color: #ffe81f;
+        padding: 16px;
+        border-radius: 12px;
+        /* Rounded corners for a modern look */
+        font-family: Arial, sans-serif;
+        width: 250px;
+        /* Fixed width for consistent layout */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        /* Add shadow for depth */
+      }
+
+      #speed-control div {
+        font-size: 16px;
+        /* Slightly larger font for better readability */
+        font-weight: bold;
+        margin-bottom: 12px;
+        /* Add spacing below the title */
+        text-align: center;
+        /* Center-align the title */
+      }
+
+      #speed-control label {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 10px;
+        /* Add spacing between rows */
+      }
+
+      #speed-control input {
+        flex: 1;
+        /* Make the slider take up available space */
+        margin: 0 10px;
+        /* Add spacing between label and slider */
+        height: 6px;
+        /* Adjust slider height for better visibility */
+        border-radius: 4px;
+        /* Rounded slider edges */
+        background: #ccc;
+        /* Slider track color */
+        outline: none;
+        /* Remove default outline */
+        appearance: none;
+        /* Remove default browser styling */
+      }
+
+      #speed-control input::-webkit-slider-thumb {
+        appearance: none;
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background: #007bff;
+        /* Blue thumb color */
+        cursor: pointer;
+      }
+
+      #speed-control input::-moz-range-thumb {
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background: #007bff;
+        /* Blue thumb color */
+        cursor: pointer;
+      }
+
+      #speed-control .speed-value {
+        min-width: 50px;
+        /* Ensure consistent width for the value display */
+        text-align: right;
+        /* Align the value text to the right */
+        font-size: 14px;
+        /* Slightly smaller font for the value */
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="speed-control">
+      <div style="font-size: 14px; margin-bottom: 8px;">Planet Speeds</div>
+      <label>
+        Mercury
+        <input type="range" class="planet-speed" data-planet="0" min="0" max="10" step="0.1" value="1" />
+        <span class="speed-value">1.00x</span>
+      </label>
+      <label>
+        Venus
+        <input type="range" class="planet-speed" data-planet="1" min="0" max="10" step="0.1" value="1" />
+        <span class="speed-value">1.00x</span>
+      </label>
+      <label>
+        Earth
+        <input type="range" class="planet-speed" data-planet="2" min="0" max="10" step="0.1" value="1" />
+        <span class="speed-value">1.00x</span>
+      </label>
+      <label>
+        Mars
+        <input type="range" class="planet-speed" data-planet="3" min="0" max="10" step="0.1" value="1" />
+        <span class="speed-value">1.00x</span>
+      </label>
+      <label>
+        Jupiter
+        <input type="range" class="planet-speed" data-planet="4" min="0" max="10" step="0.1" value="1" />
+        <span class="speed-value">1.00x</span>
+      </label>
+      <label>
+        Saturn
+        <input type="range" class="planet-speed" data-planet="5" min="0" max="10" step="0.1" value="1" />
+        <span class="speed-value">1.00x</span>
+      </label>
+      <label>
+        Uranus
+        <input type="range" class="planet-speed" data-planet="6" min="0" max="10" step="0.1" value="1" />
+        <span class="speed-value">1.00x</span>
+      </label>
+      <label>
+        Neptune
+        <input type="range" class="planet-speed" data-planet="7" min="0" max="10" step="0.1" value="1" />
+        <span class="speed-value">1.00x</span>
+      </label>
+    </div>
+    <script>
+      // Array to store each planet's speed multiplier
+      window.planetSpeedMultipliers = Array(8).fill(1); // Default to 1x speed
+
+      // Update the value and display for each slider
+      document.querySelectorAll('.planet-speed').forEach((slider, idx) => {
+        slider.addEventListener('input', (e) => {
+          const planetIdx = parseInt(slider.dataset.planet, 10);
+          const value = parseFloat(e.target.value);
+          window.planetSpeedMultipliers[planetIdx] = value;
+          slider.nextElementSibling.textContent = value.toFixed(2) + 'x';
+        });
+      });
+    </script>
+    <script defer type="module" src="/src/index.js"></script>
+  </body>
+
+</html>
