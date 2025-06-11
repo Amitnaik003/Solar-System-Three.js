@@ -2,9 +2,7 @@
 
 The Solar System is a simple representation of the eight planets orbiting the Sun. This project demonstrates the use of [Three.js](https://threejs.org/) to create cool animations and visualizations. More details about how it was built can be found in this [article](https://dev.to/cookiemonsterdev/solar-system-with-threejs-3fe0).
 
-## Demo
 
-Check out the live demo [here](https://your-live-demo-link.com).
 
 ## Assets
 
@@ -15,8 +13,8 @@ Most textures were sourced from [Planetary Pixel Emporium](https://planetpixelem
 1. Clone the repository:
 
 ```sh
-git clone https://github.com/your-username/solar-system-threejs.git
-cd solar-system-threejs
+git clone https://github.com/Amitnaik003/Solar-System-Three.js.git
+cd Solar-System-Threejs
 ```
 
 2. Install dependencies:
